@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpleadosTFIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="id_depto" />
+    </Key>
+    <Property Name="id_depto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_depto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="empleado" Relationship="Self.FK__empleado__id_dep__5165187F" FromRole="departamento" ToRole="empleado" />
+  </EntityType>
+  <EntityType Name="detalle_recibo">
+    <Key>
+      <PropertyRef Name="id_detalle" />
+    </Key>
+    <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="num_recibo" Type="Int32" Nullable="false" />
+    <Property Name="des_concepto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="cantidad" Type="Double" />
+    <Property Name="deb_o_cred" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="sueldo_base" Type="Double" />
+    <NavigationProperty Name="recibo_sueldo" Relationship="Self.FK__detalle_r__num_r__5812160E" FromRole="detalle_recibo" ToRole="recibo_sueldo" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dni" Type="Int32" Nullable="false" />
+    <Property Name="id_rol" Type="Int32" Nullable="false" />
+    <Property Name="id_depto" Type="Int32" Nullable="false" />
+    <Property Name="id_supervisor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="Int32" />
+    <Property Name="fecha_nac" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="departamento" Relationship="Self.FK__empleado__id_dep__5165187F" FromRole="empleado" ToRole="departamento" />
+    <NavigationProperty Name="rol" Relationship="Self.FK__empleado__id_rol__52593CB8" FromRole="empleado" ToRole="rol" />
+    <NavigationProperty Name="empleado1" Relationship="Self.FK__empleado__id_sup__5070F446" FromRole="empleado" ToRole="empleado1" />
+    <NavigationProperty Name="empleado2" Relationship="Self.FK__empleado__id_sup__5070F446" FromRole="empleado1" ToRole="empleado" />
+    <NavigationProperty Name="recibo_sueldo" Relationship="Self.FK__recibo_su__id_em__5535A963" FromRole="empleado" ToRole="recibo_sueldo" />
+  </EntityType>
+  <EntityType Name="recibo_sueldo">
+    <Key>
+      <PropertyRef Name="num_recibo" />
+    </Key>
+    <Property Name="num_recibo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_liq" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="detalle_recibo" Relationship="Self.FK__detalle_r__num_r__5812160E" FromRole="recibo_sueldo" ToRole="detalle_recibo" />
+    <NavigationProperty Name="empleado" Relationship="Self.FK__recibo_su__id_em__5535A963" FromRole="recibo_sueldo" ToRole="empleado" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_rol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="empleado" Relationship="Self.FK__empleado__id_rol__52593CB8" FromRole="rol" ToRole="empleado" />
+  </EntityType>
+  <Association Name="FK__empleado__id_dep__5165187F">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="id_depto" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_depto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__detalle_r__num_r__5812160E">
+    <End Role="recibo_sueldo" Type="Self.recibo_sueldo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="detalle_recibo" Type="Self.detalle_recibo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recibo_sueldo">
+        <PropertyRef Name="num_recibo" />
+      </Principal>
+      <Dependent Role="detalle_recibo">
+        <PropertyRef Name="num_recibo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__empleado__id_rol__52593CB8">
+    <End Role="rol" Type="Self.rol" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__empleado__id_sup__5070F446">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="empleado1" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="empleado1">
+        <PropertyRef Name="id_supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recibo_su__id_em__5535A963">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="recibo_sueldo" Type="Self.recibo_sueldo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="recibo_sueldo">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpleadosTFIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="departamento" EntityType="Self.departamento" />
+    <EntitySet Name="detalle_recibo" EntityType="Self.detalle_recibo" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" />
+    <EntitySet Name="recibo_sueldo" EntityType="Self.recibo_sueldo" />
+    <EntitySet Name="rol" EntityType="Self.rol" />
+    <AssociationSet Name="FK__empleado__id_dep__5165187F" Association="Self.FK__empleado__id_dep__5165187F">
+      <End Role="departamento" EntitySet="departamento" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__detalle_r__num_r__5812160E" Association="Self.FK__detalle_r__num_r__5812160E">
+      <End Role="recibo_sueldo" EntitySet="recibo_sueldo" />
+      <End Role="detalle_recibo" EntitySet="detalle_recibo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__empleado__id_rol__52593CB8" Association="Self.FK__empleado__id_rol__52593CB8">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__empleado__id_sup__5070F446" Association="Self.FK__empleado__id_sup__5070F446">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="empleado1" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recibo_su__id_em__5535A963" Association="Self.FK__recibo_su__id_em__5535A963">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="recibo_sueldo" EntitySet="recibo_sueldo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

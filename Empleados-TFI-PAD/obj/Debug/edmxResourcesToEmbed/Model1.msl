@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmpleadosTFIModelStoreContainer" CdmEntityContainer="EmpleadosTFIEntities">
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="EmpleadosTFIModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="id_depto" ColumnName="id_depto" />
+          <ScalarProperty Name="nombre_depto" ColumnName="nombre_depto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalle_recibo">
+      <EntityTypeMapping TypeName="EmpleadosTFIModel.detalle_recibo">
+        <MappingFragment StoreEntitySet="detalle_recibo">
+          <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
+          <ScalarProperty Name="num_recibo" ColumnName="num_recibo" />
+          <ScalarProperty Name="des_concepto" ColumnName="des_concepto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="deb_o_cred" ColumnName="deb_o_cred" />
+          <ScalarProperty Name="sueldo_base" ColumnName="sueldo_base" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="EmpleadosTFIModel.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="id_depto" ColumnName="id_depto" />
+          <ScalarProperty Name="id_supervisor" ColumnName="id_supervisor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recibo_sueldo">
+      <EntityTypeMapping TypeName="EmpleadosTFIModel.recibo_sueldo">
+        <MappingFragment StoreEntitySet="recibo_sueldo">
+          <ScalarProperty Name="num_recibo" ColumnName="num_recibo" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="fecha_liq" ColumnName="fecha_liq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="EmpleadosTFIModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="nombre_rol" ColumnName="nombre_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

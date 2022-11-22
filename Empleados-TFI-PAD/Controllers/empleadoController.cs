@@ -40,7 +40,7 @@ namespace Empleados_TFI_PAD.Controllers
         // GET: empleado/Create
         public ActionResult Create()
         {
-          
+
             ViewBag.id_depto = new SelectList(db.departamento, "id_depto", "nombre_depto");
             ViewBag.id_rol = new SelectList(db.rol, "id_rol", "nombre_rol");
 
@@ -62,7 +62,7 @@ namespace Empleados_TFI_PAD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id_empleado,dni,id_rol,id_depto,id_supervisor,nombre,apellido,direccion,mail,telefono,fecha_nac")] empleado empleado)
         {
-            
+
             if (true)
             {
                 db.empleado.Add(empleado);

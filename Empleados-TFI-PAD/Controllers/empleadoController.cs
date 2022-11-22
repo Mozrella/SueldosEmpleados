@@ -96,7 +96,15 @@ namespace Empleados_TFI_PAD.Controllers
             }
             ViewBag.id_depto = new SelectList(db.departamento, "id_depto", "nombre_depto", empleado.id_depto);
             ViewBag.id_rol = new SelectList(db.rol, "id_rol", "nombre_rol", empleado.id_rol);
-            ViewBag.id_supervisor = new SelectList(db.empleado, "id_empleado", "nombre", empleado.id_supervisor);
+            //ViewBag.id_supervisor = new SelectList(db.empleado, "id_empleado", "nombre", empleado.id_supervisor);
+            var supervisores = db.empleado.ToList();
+
+            ViewBag.id_supervisor = new SelectList(
+               supervisores.Select(
+                   item => new { id_empleado = item.id_empleado, nombreCompleto = $"{item.nombre} {item.apellido}" }),
+                   "id_empleado",
+                   "nombreCompleto"
+           );
             return View(empleado);
         }
 
@@ -115,7 +123,14 @@ namespace Empleados_TFI_PAD.Controllers
             }
             ViewBag.id_depto = new SelectList(db.departamento, "id_depto", "nombre_depto", empleado.id_depto);
             ViewBag.id_rol = new SelectList(db.rol, "id_rol", "nombre_rol", empleado.id_rol);
-            ViewBag.id_supervisor = new SelectList(db.empleado, "id_empleado", "nombre", empleado.id_supervisor);
+            //ViewBag.id_supervisor = new SelectList(db.empleado, "id_empleado", "nombre", empleado.id_supervisor);
+            var supervisores = db.empleado.ToList();
+            ViewBag.id_supervisor = new SelectList(
+               supervisores.Select(
+                   item => new { id_empleado = item.id_empleado, nombreCompleto = $"{item.nombre} {item.apellido}" }),
+                   "id_empleado",
+                   "nombreCompleto"
+           );
             return View(empleado);
         }
 

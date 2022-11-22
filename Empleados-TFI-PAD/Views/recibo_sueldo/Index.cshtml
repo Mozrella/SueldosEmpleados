@@ -13,6 +13,10 @@
     <tr>
         <th>
             @*@Html.DisplayNameFor(model => model.fecha_liq)*@
+            Nro de Recibo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.fecha_liq)*@
             Fecha de Liquidación
         </th>
         <th>
@@ -24,6 +28,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_recibo)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.fecha_liq)
         </td>
@@ -42,6 +49,7 @@
                     routeValues: new
                     {
                        numeroRecibo = item.num_recibo
+                        
                     },
                     htmlAttributes: null
             )
@@ -50,3 +58,15 @@
 }
 
 </table>
+<p>
+    @Html.ActionLink(
+                linkText: "Volver",
+                actionName: "Index",
+                controllerName: "empleado",
+                routeValues: new
+                {
+                  
+                },
+                htmlAttributes: null
+        )
+</p>

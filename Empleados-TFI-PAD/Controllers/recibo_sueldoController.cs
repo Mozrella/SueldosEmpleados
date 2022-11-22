@@ -24,6 +24,7 @@ namespace Empleados_TFI_PAD.Controllers
             if (idEmpleado != null)
             {
                 reciboSueldo = db.recibo_sueldo.Where(item => item.id_empleado == idEmpleado);
+                
             }
             else
             {

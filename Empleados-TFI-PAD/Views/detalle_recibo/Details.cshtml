@@ -1,0 +1,63 @@
+﻿@model Empleados_TFI_PAD.detalle_recibo
+
+@{
+    ViewBag.Title = "Detalle Recibo Sueldo";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>De Recibo de Sueldo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.des_concepto)*@
+            Concepto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.des_concepto)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.cantidad)*@
+            Cantidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.deb_o_cred)*@
+            Débito o Crédito
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deb_o_cred)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.sueldo_base)*@
+            Sueldo Base
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sueldo_base)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.recibo_sueldo.num_recibo)*@
+            Nro de Recibo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recibo_sueldo.num_recibo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_detalle }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

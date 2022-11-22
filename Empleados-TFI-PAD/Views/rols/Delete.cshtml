@@ -1,0 +1,44 @@
+﻿@model Empleados_TFI_PAD.rol
+
+@{
+    ViewBag.Title = "Borrar Rol";
+}
+
+<h2>Borrar</h2>
+
+<h3>Realmente deseas eliminar esto?</h3>
+<div>
+    <h4>rol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre_rol)*@
+            Rol
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_rol)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="form-actions no-color col-md-offset-2 col-md-10">
+                <input type="submit" value="Borrar" class="btn btn-danger" />
+            </div>
+        </div>
+
+        @*<div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Volver", "Index")
+            </div>*@
+
+        <div>
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

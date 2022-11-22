@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Empleados_TFI_PAD.rol>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+
+<p>
+    @Html.ActionLink("Nuevo +", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.nombre_rol)*@
+            Rol
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_rol)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_rol }) |
+            @Html.ActionLink("Ver", "Details", new { id=item.id_rol }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_rol })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,119 @@
+﻿@model Empleados_TFI_PAD.empleado
+
+@{
+    ViewBag.Title = "Detalles Empleado";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.dni)*@
+            DNI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.apellido)*@
+            Apellido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.direccion)*@
+            Dirección
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.mail)*@
+            Correo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.telefono)*@
+            Teléfono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.fecha_nac)*@
+            Nacimiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nac)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.departamento.nombre_depto)*@
+            Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento.nombre_depto)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rol.nombre_rol)*@
+            Rol
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rol.nombre_rol)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.empleado2.nombre)*@
+            Supervisor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado2.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(
+    linkText: "Ver recibos de Sueldo",
+    actionName: "Index",
+    controllerName: "recibo_sueldo",
+    routeValues: new
+    {
+        idEmpleado = Model.id_empleado
+    },
+    htmlAttributes: null)
+</p>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_empleado }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

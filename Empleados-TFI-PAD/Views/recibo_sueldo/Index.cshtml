@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Empleados_TFI_PAD.recibo_sueldo>
+
+@{
+    ViewBag.Title = "Recibos de Sueldo";
+}
+
+<h2>Recibos de Sueldo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo +", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.fecha_liq)*@
+            Fecha de Liquidación
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.empleado.nombre)*@
+            Nombre del Empleado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_liq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.nombre)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.num_recibo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.num_recibo }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.num_recibo })*@
+
+            @Html.ActionLink(
+                    linkText: "Ver Detalle de recibo de sueldo",
+                    actionName: "Index",
+                    controllerName: "detalle_recibo",
+                    routeValues: new
+                    {
+                       numeroRecibo = item.num_recibo
+                    },
+                    htmlAttributes: null
+            )
+        </td>
+    </tr>
+}
+
+</table>

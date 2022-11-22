@@ -1,0 +1,27 @@
+﻿@model Empleados_TFI_PAD.departamento
+
+@{
+    ViewBag.Title = "Detalles Depto";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Departamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre_depto)*@
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_depto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_depto }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

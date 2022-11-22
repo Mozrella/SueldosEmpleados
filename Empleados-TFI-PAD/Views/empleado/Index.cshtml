@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Empleados_TFI_PAD.empleado>
+
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    @Html.ActionLink("Nuevo +", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            Nombre
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.mail)*@
+            Correo
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.fecha_nac)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.dni)
+            DNI
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.departamento.nombre_depto)*@
+            Departamento
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rol.nombre_rol)*@
+            Rol
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.empleado2.nombre)*@
+            Supervisor
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)  @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.fecha_nac)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.departamento.nombre_depto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rol.nombre_rol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado2.nombre) @Html.DisplayFor(modelItem => item.empleado2.apellido)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.id_empleado }) |
+            @Html.ActionLink("Ver", "Details", new { id = item.id_empleado }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.id_empleado })
+        </td>
+    </tr>
+}
+
+</table>

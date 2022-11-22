@@ -1,0 +1,27 @@
+﻿@model Empleados_TFI_PAD.rol
+
+@{
+    ViewBag.Title = "Detalles Rol";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Rol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre_rol)*@
+            Rol
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_rol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_rol }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

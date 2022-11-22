@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Empleados_TFI_PAD.detalle_recibo>
+
+@{
+    ViewBag.Title = "Detalle Recibo Sueldo";
+}
+
+<h2>Detalle de Recibo de Sueldo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo +", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.des_concepto)*@
+            Concepto
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.cantidad)*@
+            Cantidad
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.deb_o_cred)*@
+            Débito o Crédito
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.sueldo_base)*@
+            Sueldo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.recibo_sueldo.num_recibo)*@
+            Número de Recibo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_concepto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deb_o_cred)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.sueldo_base)*@
+            @{
+                ViewBag.dolarOficial = Convert.ToDouble(item.sueldo_base) * Convert.ToDouble(@ViewBag.dolar);
+            }
+            $ @ViewBag.dolarOficial.ToString("0. ##")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recibo_sueldo.num_recibo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_detalle }) |
+            @Html.ActionLink("Ver", "Details", new { id=item.id_detalle }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_detalle })
+        </td>
+    </tr>
+}
+
+</table>

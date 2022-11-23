@@ -103,7 +103,8 @@ namespace Empleados_TFI_PAD.Controllers
                supervisores.Select(
                    item => new { id_empleado = item.id_empleado, nombreCompleto = $"{item.nombre} {item.apellido}" }),
                    "id_empleado",
-                   "nombreCompleto"
+                   "nombreCompleto",
+                   empleado.id_supervisor
            );
             return View(empleado);
         }
